@@ -1,0 +1,11 @@
+{
+  "name": "proven-shelf",
+  "version": "1.0.0",
+  "description": "The anti-lemons gate for agent storefronts: certify that every listing on a catalog carries a re-runnable proof. The badge is itself re-runnable — never a signed attestation.",
+  "type": "module",
+  "main": "shelf-gate.mjs",
+  "scripts": {
+    "test": "node --test shelf-gate.test.mjs"
+  },
+  "license": "MIT"
+}

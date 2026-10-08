@@ -1,0 +1,6 @@
+{
+  "files": ["shelf-gate.mjs"],
+  "testCommand": "node --test shelf-gate.test.mjs",
+  "cap": 400,
+  "timeout": 600000
+}

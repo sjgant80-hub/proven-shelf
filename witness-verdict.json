@@ -1,0 +1,42 @@
+{
+  "badge": true,
+  "hash": "a3ec7370a2f395eadba112b5ab63b1e9f2c8e2aa8a19fdf3a3ef4dc2a82e6ede",
+  "spec": {
+    "benchmark": "witness",
+    "benchVersion": "1",
+    "files": [
+      "shelf-gate.mjs"
+    ],
+    "testCommand": "node --test shelf-gate.test.mjs",
+    "cap": 400,
+    "operators": 13
+  },
+  "specFingerprint": "3a7e2302462ac3903856ad350dc174a6c86ebf3c216db646789c46101db84b9b",
+  "dominantTell": null,
+  "summary": {
+    "files": 1,
+    "mutants": 127,
+    "killed": 127,
+    "survived": 0,
+    "score": 1,
+    "clean": true,
+    "core": 127,
+    "nonCore": 0,
+    "perFile": [
+      {
+        "file": "shelf-gate.mjs",
+        "total": 127,
+        "killed": 127,
+        "survived": 0,
+        "score": 1,
+        "clean": true
+      }
+    ],
+    "perFileReport": [
+      {
+        "file": "shelf-gate.mjs",
+        "survivors": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "registry": "proven-shelf/certified",
+  "note": "Every entry is re-verified by certify.mjs on every push and weekly on cron: fetch the shelf's receipt and live catalog, re-run the gate, reproduce the anchor or refuse the registry. An entry here is a standing claim, not a memory of a pass.",
+  "shelves": []
+}

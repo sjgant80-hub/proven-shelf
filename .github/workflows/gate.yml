@@ -1,0 +1,55 @@
+name: gate
+
+# The kit polices itself with the same rail it sells:
+#   test          — the kernel's suite.
+#   witness-gate  — witness mutation-gates shelf-gate.mjs on a fresh runner and the committed
+#                   proof-of-play receipt must reproduce BYTE-IDENTICALLY (git diff --exit-code).
+#   recertify     — every shelf in certified.json must still prove: fetch its receipt + live
+#                   catalog, re-run the gate, reproduce the anchor or refuse the registry.
+# On every push, and weekly on cron, so rot is caught even when nothing changes here.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '7 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm test
+
+  # Own fresh runner, never downstream of another job's churn (the witness repo's lesson).
+  witness-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: witness proof-of-play gate on the kernel
+        # pinned to the exact instrument the committed receipt was minted under — a moved gate
+        # must change the fingerprint loudly (INSTRUMENT_CHANGED), never drift silently
+        uses: sjgant80-hub/witness@5a1ffba13c06eb0e4702f8eb7468bbf53c3281ea
+      - name: the committed receipt must be the one this runner just minted
+        run: git diff --exit-code witness-receipt.json witness-verdict.json witness-badge.json
+
+  recertify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: every certified shelf must still prove
+        run: node certify.mjs

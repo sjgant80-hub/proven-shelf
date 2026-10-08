@@ -1,0 +1,47 @@
+name: 'proven shelf — catalog certification gate'
+description: 'The anti-lemons gate for agent storefronts: every listing must carry a re-runnable proof, the committed shelf receipt must reproduce from the catalog, and dead links fail the build.'
+author: 'sjgant80-hub'
+branding:
+  icon: 'check-circle'
+  color: 'green'
+inputs:
+  mode:
+    description: 'gate (schema only), mint (write shelf-receipt.json + shelf-badge.json), or check (the committed receipt must reproduce — the certification default).'
+    required: false
+    default: 'check'
+  config:
+    description: 'Path to the shelf adoption file (shelf name, catalog path, catalog URL, rules).'
+    required: false
+    default: 'proven-shelf.json'
+  live:
+    description: 'Also require every shelf link to answer (liveness pass).'
+    required: false
+    default: 'true'
+  node-version:
+    description: 'Node version to run the gate under.'
+    required: false
+    default: '20'
+outputs:
+  anchor:
+    description: 'The shelf anchor — reproduces on any clean runner from the catalog alone.'
+    value: ${{ steps.gate.outputs.anchor }}
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: proven shelf gate
+      id: gate
+      shell: bash
+      run: |
+        set +e
+        args=("${{ inputs.mode }}" "$GITHUB_WORKSPACE" --config "${{ inputs.config }}")
+        if [ "${{ inputs.live }}" = "true" ]; then args+=(--live); fi
+        node "${{ github.action_path }}/shelf-cli.mjs" "${args[@]}"
+        code=$?
+        if [ -f "$GITHUB_WORKSPACE/shelf-receipt.json" ]; then
+          anchor=$(node -e "process.stdout.write(JSON.parse(require('fs').readFileSync(process.argv[1],'utf8')).hash)" "$GITHUB_WORKSPACE/shelf-receipt.json")
+          echo "anchor=$anchor" >> "$GITHUB_OUTPUT"
+        fi
+        exit $code

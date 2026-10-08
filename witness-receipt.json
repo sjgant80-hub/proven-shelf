@@ -1,0 +1,25 @@
+{
+  "v": "0.1",
+  "repo": "proven-shelf",
+  "benchmark": {
+    "spec": {
+      "benchmark": "witness",
+      "benchVersion": "1",
+      "files": [
+        "shelf-gate.mjs"
+      ],
+      "testCommand": "node --test shelf-gate.test.mjs",
+      "cap": 400,
+      "operators": 13
+    },
+    "fingerprint": "3a7e2302462ac3903856ad350dc174a6c86ebf3c216db646789c46101db84b9b"
+  },
+  "verdict": {
+    "badge": true,
+    "core": 127,
+    "nonCore": 0,
+    "dominantTell": null
+  },
+  "hash": "a3ec7370a2f395eadba112b5ab63b1e9f2c8e2aa8a19fdf3a3ef4dc2a82e6ede",
+  "admissible": true
+}
