@@ -1,5 +1,17 @@
 {
   "registry": "proven-shelf/certified",
   "note": "Every entry is re-verified by certify.mjs on every push and weekly on cron: fetch the shelf's receipt and live catalog, re-run the gate, reproduce the anchor or refuse the registry. An entry here is a standing claim, not a memory of a pass.",
-  "shelves": []
+  "shelves": [
+    {
+      "shelf": "kar-hub",
+      "pages": "https://sjgant80-hub.github.io/kar-hub/",
+      "catalog": "https://sjgant80-hub.github.io/kar-hub/catalog.json",
+      "receipt": "https://sjgant80-hub.github.io/kar-hub/shelf-receipt.json",
+      "badge": "https://sjgant80-hub.github.io/kar-hub/shelf-badge.json",
+      "anchor": "0451d3a0b8c76c24290ee2031eec1ce7fbf60a1ea72dc52db74a7a2066665152",
+      "rules": { "requireFree": true, "forbidPricing": true, "requireCredit": true },
+      "certified": "2026-10-08",
+      "note": "Reference certification #1 — the estate's own storefront, gated in its CI by this kit (mode check + liveness) on every push and weekly."
+    }
+  ]
 }
