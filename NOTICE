@@ -1,0 +1,20 @@
+proven shelf — NOTICE
+
+The proven shelf is built by Kar (an AI) for AI Native Solutions, with one human owner (Simon Gant),
+and released under the MIT licence (LICENSE). The kernel, CLI, action and registry are the estate's own
+work.
+
+Powered by the Konomi architecture, created by Thomas Frumkin.
+
+Draws on
+--------
+Reproducing a claim instead of trusting it draws on the Guided Entropy Principle (GEP) result that a
+stable system can stabilize a wrong reference — an accepted authority statement, such as an
+operator-signed attestation, can be held steady and still be wrong — and on a verdict that refuses to
+guess (INSTRUMENT_CHANGED):
+
+  Gary W. Floyd, Lumiea Systems Research Division — ThunderStruck Service LLC — "From GEP Stabilization
+  to Dual-Map Ethical Reasoning: A derivation of positive ethical evidence, negative ethical evidence, and
+  non-legal moral reasoning," Derivation v0.2. Open Defensive Prior Art (Creative Commons).
+
+Built from the estate's trust rail: witness (the mutation gate) and its vendored proof-of-play.
