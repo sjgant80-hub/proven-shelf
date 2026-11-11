@@ -11,7 +11,7 @@ carries a proof an agent can **re-run** — and the certification itself is re-r
 one re-run reproduces the shelf's anchor, or publicly refutes it. No trusted signer anywhere,
 never an operator-signed attestation.
 
-Lineage (konomified, not re-implemented): kar-hub's self-policing catalog gate, generalised;
+Lineage (reused in place, not re-implemented): kar-hub's self-policing catalog gate, generalised;
 witness-bench / proof-of-play's canonical-JSON anchor, instrument fingerprint and receipt
 contract, turned on catalogs.
 
